@@ -2,6 +2,12 @@ from textnode import TextNode, TextType
 import os
 import shutil
 from generate_page import generate_page, generate_pages_recursive
+import sys
+
+if len(sys.argv) > 1:
+    basepath = sys.argv[1]
+else:
+    basepath = "/"
 
 def sync_directories(source, destination):
     def delete_files(target_dir):
@@ -35,10 +41,10 @@ def sync_directories(source, destination):
 
 def main():
     source = "./static"
-    destination = "./public"
+    destination = "./docs"
 
     sync_directories(source, destination)
 
-    generate_pages_recursive("./content", "./template.html", "./public")
+    generate_pages_recursive("./content", "./template.html", "./docs", basepath)
 
 main()
