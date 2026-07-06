@@ -45,6 +45,7 @@ def main():
 
     sync_directories(source, destination)
 
+    print(f"about to run generate_pages_recursive, basepath: {basepath}")
     generate_pages_recursive("./content", "./template.html", "./docs", basepath)
-
+    
 main()
